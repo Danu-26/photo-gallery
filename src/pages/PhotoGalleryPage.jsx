@@ -21,8 +21,12 @@ function PhotoGalleryPage() {
 
     // Search query filtering
     const filteredPhotos = photos.filter(photo =>
-        photo.title.toLowerCase().includes(searchQuery.toLowerCase())
+        photo.title.toLowerCase().trim().includes(searchQuery.toLowerCase().trim())
     );
+
+
+
+
 
     // Pagination logic
     const indexOfLastPhoto = currentPage * photosPerPage;
