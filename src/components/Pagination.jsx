@@ -18,13 +18,13 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
         Prev
       </button>
 
-      {pageNumbers.map((number) => (
+      {pageNumbers.map((num) => (
         <button
-          key={number}
-          onClick={() => onPageChange(number)}
-          className={`px-3 py-1 md:px-4 md:py-2 rounded-md ${currentPage === number ? 'bg-purple-500 text-white font-bold' : 'bg-gray-300 hover:bg-gray-400'}`}
+          key={num}
+          onClick={() => onPageChange(num)}
+          className={`px-3 py-1 md:px-4 md:py-2 rounded-md ${currentPage === num ? 'bg-purple-500 text-white font-bold' : 'bg-gray-300 hover:bg-gray-400'}`}
         >
-          {number}
+          {num}
         </button>
       ))}
 

@@ -1,12 +1,34 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Project setup
+git clone https://github.com/Danu-26/photo-gallery.git
+Start the project: npm run dev
+Start local json server:npx json-server --watch db.json --port 3000
 
-Currently, two official plugins are available:
+# Redux Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Store Configuration
+In this project, Redux is used to manage the app's state. I create the Redux store using `@reduxjs/toolkit`, which combines multiple reducers to handle different states:
 
-## Expanding the ESLint configuration
+- photosReducer: Manages the list of photos.
+- photoDetailsReducer: Manages the details of one specific photo.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The store is set up like this:
+- photos: Stores the list of all photos.
+- photoDetails: Stores the details of a single photo.
+
+## Creating Slices
+
+- photoSlice: Manages fetching and displaying the list of photos. It uses createAsyncThunk to get data from the local API (`http://localhost:3000/photos`) and stores the photos, loading state, and error messages.
+  
+- photoDetailsSlice: Manages the state for a single photo's details. It also uses createAsyncThunk to fetch data for a photo by its ID from the same local API.
+
+# Managing Data
+With Redux, data is managed in a predictable way. Each slice handles a specific part of the state:
+
+- photoSlice: Stores an array of photos and updates the state when the data is fetched or if there's an error.
+- photoDetailsSlice: Stores details of a single photo and updates when the data is fetched by the photo ID.
+
+In both slices, extraReducers manage the loading and error states using the `pending`, `fulfilled`, and `rejected` statuses.
+
+
+

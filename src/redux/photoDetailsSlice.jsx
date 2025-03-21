@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+//http://localhost:3000/photos this is my local fake api 
 const API_URL = "http://localhost:3000/photos";
 
 // Async action to fetch photo by ID
